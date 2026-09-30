@@ -1,0 +1,29 @@
+{
+  "scenario_name": "custom_map_32",
+  "display_name": "Catch The Thief!",
+  "difficulty": "original",
+  "width": 26,
+  "height": 16,
+  "layout": [
+    "##########################",
+    "#.................i.iFIXi#",
+    "#..nnn.......nnn..iiiiii/#",
+    "#..nin....nnnnin...i...iI#",
+    "#iinnn....nbnnnn...i...iS#",
+    "#.ii.ssss.nnn......iiiiii#",
+    "#.iiNssss................#",
+    "#iiggggss........nnn.....#",
+    "#gggiggss........nin.....#",
+    "#ggggggss......B.nnn.....#",
+    "#ggggggss......I......nnn#",
+    "#ggg;ggssnnn...Y......nin#",
+    "#ggggggssnin......&IM.nnn#",
+    "#ggggggssnnn.............#",
+    "#ggggggss................#",
+    "##########################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

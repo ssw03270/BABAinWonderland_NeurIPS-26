@@ -1,0 +1,23 @@
+{
+  "scenario_name": "custom_map_17",
+  "display_name": "Changeless",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#.....wwwww...a.#",
+    "#......RIR.....a#",
+    "#.a.............#",
+    "#...b...f......W#",
+    "#..............I#",
+    "#......ZIR.....S#",
+    "#wwww.......wwww#",
+    "#BIYwa......wZIN#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

@@ -1,0 +1,28 @@
+{
+  "scenario_name": "custom_map_16",
+  "display_name": "Locked In",
+  "difficulty": "original",
+  "width": 26,
+  "height": 16,
+  "layout": [
+    "##########################",
+    "#.....a..................#",
+    "#..................a.....#",
+    "#...t....wwwwwwwww.....a.#",
+    "#.a......wbnnnnnnw.......#",
+    "#........wnnjnnWnw.......#",
+    "#..ZIN...wjjjnnInw.......#",
+    "#........wnnnnnSnw...a...#",
+    "#..BIY.a.wnnnnnnnw....a..#",
+    "#........wnJISnnnw.......#",
+    "#....a...wnnnnnnnw...t...#",
+    "#..a.....wnnnnnnnw.a.....#",
+    "#........wwwwwwwww.......#",
+    "#........................#",
+    "#WIX..................a..#",
+    "##########################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

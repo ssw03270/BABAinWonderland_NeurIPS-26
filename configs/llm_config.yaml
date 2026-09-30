@@ -1,0 +1,30 @@
+# Inference settings
+# Change `inference.provider` to switch between OpenAI and Gemini.
+
+inference:
+  provider: "openai"  # openai | gemini
+  max_tokens: 32768
+  # stop_sequences: ["<END>"]
+
+  # Shared retry settings
+  request_max_retries: 5
+  request_retry_initial_delay_sec: 1.0
+  request_retry_max_delay_sec: 30.0
+
+  # OpenAI
+  openai_base_url: "https://api.openai.com/v1"
+  openai_api_key: null
+  openai_api_key_env: "OPENAI_API_KEY"
+  openai_model: "gpt-5.4-mini"
+  openai_reasoning_effort: "medium"   # none | minimal | low | medium | high | xhigh
+  openai_timeout_sec: 300.0
+
+  # Gemini Developer API
+  gemini_base_url: "https://generativelanguage.googleapis.com/v1beta"
+  gemini_api_key: null
+  gemini_api_key_env: "GEMINI_API_KEY"
+  gemini_model: "gemini-3-flash-preview"
+  gemini_timeout_sec: 300.0
+  gemini_include_thoughts: false
+  gemini_thinking_level: "MEDIUM"   # MINIMAL | LOW | MEDIUM | HIGH
+  gemini_thinking_budget: null

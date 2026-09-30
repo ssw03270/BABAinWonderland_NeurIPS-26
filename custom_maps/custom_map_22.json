@@ -1,0 +1,22 @@
+{
+  "scenario_name": "custom_map_22",
+  "display_name": "Submerged Ruins",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#........wwwwwww#",
+    "#...b....r..CZ.w#",
+    "#..BIY...w..wIIw#",
+    "#........w..wXNw#",
+    "#....wwwww..wwww#",
+    "#....w...w.....w#",
+    "#....ccf.w.RIP.w#",
+    "#WISww...w.....w#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

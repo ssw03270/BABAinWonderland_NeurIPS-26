@@ -1,0 +1,19 @@
+extends: experiment_config_online.yaml
+
+experiment:
+  name: "alice_offline"
+  max_total_llm_calls: 100
+
+dashboard:
+  headless: false
+
+agent:
+  shuffle_collected_transitions: false
+
+data_collection:
+  use_agent_collector: false
+  manual_transition_dir: "artifacts/manual_transitions/env__baba_custom_ascii_original"
+  max_collect_transitions_per_verify: 1
+
+python_program:
+  save_new_transition_images: true

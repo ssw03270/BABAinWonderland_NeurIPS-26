@@ -1,0 +1,95 @@
+original:
+  debug:
+    - custom_map_01
+
+  stage1_train:
+    - custom_map_01
+    - custom_map_02
+    - custom_map_03
+    - custom_map_04
+    - custom_map_05
+    - custom_map_06
+    - custom_map_07
+    - custom_map_08
+
+  stage2_train:
+    - custom_map_09
+    - custom_map_10
+    - custom_map_11
+    - custom_map_12
+    - custom_map_13
+    - custom_map_14
+    - custom_map_15
+    - custom_map_16
+    - custom_map_17
+    - custom_map_18
+    - custom_map_19
+    - custom_map_20
+    - custom_map_21
+  stage2_test:
+    - custom_map_22
+    - custom_map_23
+
+  stage3_train:
+    - custom_map_24
+    - custom_map_25
+    - custom_map_27
+    - custom_map_28
+    - custom_map_30
+    - custom_map_31
+    - custom_map_32
+    - custom_map_33
+    - custom_map_35
+    - custom_map_36
+    - custom_map_38
+  stage3_test:
+    - custom_map_26
+    - custom_map_29
+    - custom_map_34
+    - custom_map_37
+    - custom_map_39
+    - custom_map_40
+
+  all_train:
+    - custom_map_01
+    - custom_map_02
+    - custom_map_03
+    - custom_map_04
+    - custom_map_05
+    - custom_map_06
+    - custom_map_07
+    - custom_map_08
+    - custom_map_09
+    - custom_map_10
+    - custom_map_11
+    - custom_map_12
+    - custom_map_13
+    - custom_map_14
+    - custom_map_15
+    - custom_map_16
+    - custom_map_17
+    - custom_map_18
+    - custom_map_19
+    - custom_map_20
+    - custom_map_21
+    - custom_map_24
+    - custom_map_25
+    - custom_map_27
+    - custom_map_28
+    - custom_map_30
+    - custom_map_31
+    - custom_map_32
+    - custom_map_33
+    - custom_map_35
+    - custom_map_36
+    - custom_map_38
+    
+  all_test:
+    - custom_map_22
+    - custom_map_23
+    - custom_map_26
+    - custom_map_29
+    - custom_map_34
+    - custom_map_37
+    - custom_map_39
+    - custom_map_40

@@ -1,0 +1,8 @@
+{"transition_index": 0, "state_index": 0, "next_state_index": 1, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 1, "state_index": 1, "next_state_index": 2, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 2, "state_index": 2, "next_state_index": 3, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 3, "state_index": 3, "next_state_index": 4, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 4, "state_index": 4, "next_state_index": 5, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 5, "state_index": 5, "next_state_index": 6, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 6, "state_index": 6, "next_state_index": 7, "action": "right", "reward": 0.0, "done": false}
+{"transition_index": 7, "state_index": 7, "next_state_index": 8, "action": "right", "reward": 0.9999999928, "done": true}

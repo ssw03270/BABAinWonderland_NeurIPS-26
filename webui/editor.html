@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BABA Editor Web UI</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="hud-shell">
+      <header class="hud-header">
+        <div>
+          <p class="hud-kicker">CUSTOM MAP EDITOR</p>
+          <h1 class="hud-title">Map Editor</h1>
+        </div>
+        <div class="status-pill" id="editor-status">idle</div>
+      </header>
+
+      <main class="hud-grid hud-grid-editor">
+        <section class="hud-panel hud-board-panel">
+          <div class="hud-panel-head">
+            <h2>Map Board</h2>
+          </div>
+          <div class="board-host hud-board-host" id="editor-board"></div>
+        </section>
+
+        <aside class="hud-sidebar-stack">
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Scenario</h2>
+            </div>
+            <div class="control-grid editor-control-grid">
+              <label class="field">
+                <span>Difficulty</span>
+                <select id="editor-load-difficulty"></select>
+              </label>
+              <label class="field field-wide">
+                <span>Scenario</span>
+                <select id="editor-load-scenario"></select>
+              </label>
+            </div>
+            <div class="button-row">
+              <button id="editor-load-map-button" class="button">Load</button>
+            </div>
+            <div class="meta-block hud-meta" id="editor-catalog-meta"></div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>New Map</h2>
+            </div>
+            <div class="control-grid editor-control-grid">
+              <label class="field">
+                <span>Difficulty</span>
+                <select id="editor-new-difficulty"></select>
+              </label>
+              <label class="field">
+                <span>Scenario Id</span>
+                <input id="editor-new-scenario-name" type="text" placeholder="custom_map" />
+              </label>
+              <label class="field">
+                <span>Width</span>
+                <input id="editor-new-width" type="number" min="3" step="1" />
+              </label>
+              <label class="field">
+                <span>Height</span>
+                <input id="editor-new-height" type="number" min="3" step="1" />
+              </label>
+              <label class="field field-wide">
+                <span>Display Name</span>
+                <input id="editor-new-display-name" type="text" placeholder="Optional title" />
+              </label>
+            </div>
+            <div class="button-row">
+              <button id="editor-create-map-button" class="button button-primary">Start New Map</button>
+            </div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Editor HUD</h2>
+            </div>
+            <div class="meta-block hud-meta" id="editor-meta"></div>
+            <div class="button-row">
+              <button id="editor-save-button" class="button">Save (S)</button>
+              <button id="editor-clear-interior-button" class="button">Clear Interior (C)</button>
+            </div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Direction</h2>
+            </div>
+            <div class="button-row direction-row">
+              <button class="button editor-direction-button" data-direction="">none (X)</button>
+              <button class="button editor-direction-button" data-direction="0">0</button>
+              <button class="button editor-direction-button" data-direction="1">1</button>
+              <button class="button editor-direction-button" data-direction="2">2</button>
+              <button class="button editor-direction-button" data-direction="3">3</button>
+            </div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Palette</h2>
+            </div>
+            <div class="palette-grid" id="editor-palette"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/static/editor.js"></script>
+  </body>
+</html>

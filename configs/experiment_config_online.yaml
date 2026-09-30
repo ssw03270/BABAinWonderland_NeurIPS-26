@@ -1,0 +1,158 @@
+# Experiment Configuration
+experiment:
+  name: "alice_online"
+  seed: 256
+  output_dir: "experiments/"  # base directory; each run creates <name>_<YYYYMMDD_HHMMSS>/
+  max_total_llm_calls: 100  # optional overall run budget; when set, reaching the budget stops the run
+
+analysis_archive:
+  enabled: true
+  local_tmp_dir: null  # null => system temp; otherwise use this as the local spool root
+  copy_interval_sec: 180.0  # batch tmp->exp copies on this interval; close() always flushes
+
+dashboard:
+  headless: false  # true => skip dashboard server/browser and per-step dashboard bookkeeping entirely
+
+# LLM-facing state word aliases. These only affect serialized state/prompt text,
+# not simulator semantics. rule_noun and world_object can be remapped separately.
+serialization:
+  word_aliases:
+    rule_noun:
+      algae: "algae"
+      baba: "baba"
+      bog: "bog"
+      bolt: "bolt"
+      bubble: "bubble"
+      cog: "cog"
+      crab: "crab"
+      door: "door"
+      brick: "brick"
+      flag: "flag"
+      flower: "flower"
+      grass: "grass"
+      hedge: "hedge"
+      ice: "ice"
+      jelly: "jelly"
+      keke: "keke"
+      key: "key"
+      lava: "lava"
+      love: "love"
+      pillar: "pillar"
+      pipe: "pipe"
+      reed: "reed"
+      rock: "rock"
+      robot: "robot"
+      skull: "skull"
+      star: "star"
+      text: "text"
+      tile: "tile"
+      wall: "wall"
+      water: "water"
+    rule_operator:
+      and: "and"
+      is: "is"
+
+    # Original rule_property mappings (identity)
+#    rule_property:
+#     defeat: "defeat"
+#     float: "float"
+#     hot: "hot"
+#     melt: "melt"
+#     move: "move"
+#     open: "open"
+#     push: "push"
+#     shut: "shut"
+#     sink: "sink"
+#     shift: "shift"
+#     stop: "stop"
+#     win: "win"
+#     you: "you"
+
+    # Alice-based
+    # - counter-intuitive remapping to encourage LLMs to infer semantics from evidence rather than prior word meanings
+    rule_property:
+      defeat: "wake"
+      float: "wrong"
+      hot: "grin"
+      melt: "curious"
+      move: "drink"
+      open: "mad"
+      push: "grow"
+      shut: "late"
+      sink: "begin"
+      shift: "quiet"
+      stop: "eat"
+      win: "shrink"
+      you: "strange"
+
+    world_object:
+      algae: "algae"
+      baba: "baba"
+      bog: "bog"
+      bolt: "bolt"
+      bubble: "bubble"
+      cog: "cog"
+      crab: "crab"
+      door: "door"
+      brick: "brick"
+      flag: "flag"
+      flower: "flower"
+      grass: "grass"
+      hedge: "hedge"
+      ice: "ice"
+      jelly: "jelly"
+      keke: "keke"
+      key: "key"
+      lava: "lava"
+      love: "love"
+      pillar: "pillar"
+      pipe: "pipe"
+      reed: "reed"
+      rock: "rock"
+      robot: "robot"
+      skull: "skull"
+      star: "star"
+      tile: "tile"
+      wall: "wall"
+      water: "water"
+
+# prompting:
+#   additional_instructions: |
+#     rule_property words may be intentionally counter-intuitive aliases.
+#     Infer their semantics from the structured state and transition evidence, not from their everyday meanings.
+
+
+# Explorer agent
+agent:
+  config_path: "src/agents/configs/graph_contrastive_agent.yaml"
+  shuffle_collected_transitions: false
+
+# Data collection
+data_collection:
+  use_agent_collector: true          # true: collect with explorer/agent, false: load saved manual transitions
+  manual_transition_dir: null        # null => manual_env_play/<sanitized env name> under the project root
+  # use_agent_collector: false
+  # manual_transition_dir: "./manual_env_play/env__two_room_make_win_distr_obj_irrelevant_rule"
+  max_collect_transitions_per_verify: 256  # switch from collect to verify after this many global collect steps
+  canonical_dataset_max_size: null     # null means unbounded canonical dataset
+  exploration_visualization:
+    dashboard_history_limit: 20000
+    transition_projection_tsne_max_points: 3000
+    transition_projection_tsne_min_points_per_class: 20
+    transition_projection_tsne_iters: 450
+
+# Python program world model settings
+python_program:
+  patch_format: "function"   # line | function
+  max_fail_count: 15  # per-target patch retry cap (LLM failed to solve target transition)
+  saturation_global_step_window: 300000  # saturate when no program patch is incorporated for this many global steps
+  regression_group_sample_k: 3      # n: max affected hypothesis classes sampled for preservation witnesses
+  regression_witnesses_per_group: 1 # m: max broken transitions sampled from each selected class
+  program_eval_workers: 16
+  progress_bar_refresh_interval_sec: 5.0
+  save_new_transition_images: true
+  sandbox:
+    max_code_chars: null
+    max_ast_nodes: null
+    line_budget: null
+    timeout_ms: null

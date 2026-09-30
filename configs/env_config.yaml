@@ -1,0 +1,27 @@
+# Baba in Wonderland Environment Configuration
+# environment:
+#   name: "env/baba_in_wonderland_baseline_medium"
+#   max_steps: 100
+#   render_mode: null
+#   kwargs:
+#     encoding_level: 1
+    # For custom original map subsets, switch name to `env/baba_custom_ascii_original`
+    # and add:
+    # scenario_split: "all_train"  # stage1_train, stage1_test, stage2_train, stage2_test, all_train, all_test
+    # split_manifest_path: "configs/custom_map_splits_dot_test.yaml"
+    # You can also bypass named splits with:
+    # allowed_scenario_types: ["custom_map_01", "custom_map_02"]
+
+environment:
+  name: "env/baba_custom_ascii_original"
+  max_steps: 300
+  render_mode: null
+  kwargs:
+    encoding_level: 1
+    scenario_split: "all_train"
+    split_manifest_path: "configs/custom_map_splits_dot_test.yaml"
+
+
+# State serialization
+serialization:
+  format: "json"

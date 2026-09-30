@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BABA Solution Collector</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="hud-shell">
+      <header class="hud-header">
+        <div>
+          <p class="hud-kicker">SOLUTION COLLECTOR</p>
+          <h1 class="hud-title">Interactive Solution Collector</h1>
+        </div>
+        <div class="status-pill" id="player-status">idle</div>
+      </header>
+
+      <main class="hud-grid hud-grid-player">
+        <section class="hud-panel hud-board-panel">
+          <div class="hud-panel-head">
+            <h2>Board</h2>
+          </div>
+          <div class="board-host hud-board-host" id="player-board"></div>
+        </section>
+
+        <aside class="hud-sidebar-stack">
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Collection HUD</h2>
+            </div>
+            <div class="meta-block hud-meta" id="player-meta"></div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Controls</h2>
+            </div>
+            <div class="button-row">
+              <button id="reset-session-button" class="button">Reset (R)</button>
+              <button id="save-solution-button" class="button button-primary">Save Solution (S)</button>
+              <button id="next-scenario-button" class="button">Next Scenario (T)</button>
+            </div>
+            <div class="button-row action-row">
+              <button data-action="up" class="button action-button">Up</button>
+              <button data-action="left" class="button action-button">Left</button>
+              <button data-action="idle" class="button action-button">Idle</button>
+              <button data-action="right" class="button action-button">Right</button>
+              <button data-action="down" class="button action-button">Down</button>
+            </div>
+            <p class="hud-copy">
+              Solve the target scenario and press <strong>S</strong> to save it. <strong>T</strong> moves to the next scenario,
+              and saves an unsaved solved run first.
+            </p>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/static/solution_player.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+# Installed by environment.yaml:
+#   conda env create -f environment.yaml
+
+# Configuration
+PyYAML>=6.0
+
+# Baba in Wonderland environment
+gym>=0.25.0,<0.26
+numpy>=1.24.0,<3
+opencv-python>=4.8.0
+
+# Program discovery and learning
+torch>=2.1.0
+tqdm>=4.65.0
+
+# Rendering and web UIs
+Pillow>=10.0.0
+fastapi>=0.115.0
+pydantic>=2.8.0
+starlette>=0.37.2
+uvicorn>=0.30.0
+
+# Test and FastAPI TestClient support
+httpx>=0.23.0
+pytest>=8.0
+
+# Optional dashboard projection dependency:
+# scikit-learn>=1.2.0

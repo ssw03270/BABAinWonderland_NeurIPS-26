@@ -1,0 +1,52 @@
+You are preparing a new JSON patch for a Python world model program.
+
+Your task:
+- Base your reasoning on the structured state representation and the observed transition differences.
+- Use the target failures as the primary objective.
+- Edit only the accepted baseline program shown below.
+- Prefer repairs that improve structural simplicity by reusing existing logic and minimizing special-case conditions.
+- Keep `predict_next_state` as the top-level orchestrator of the transition pipeline.
+- Revise, replace, consolidate, split, or delete functions according to the general rule they should represent.
+
+$additional_instructions_block
+$sandbox_runtime_block
+Accepted baseline program to patch now:
+- This is the only program you may edit.
+```python
+$current_source
+```
+
+Accepted baseline target failures to solve with the next patch:
+- These are the direct failures the next patch must fix.
+- Any field named accepted_baseline_predicted_next_state is the accepted baseline output.
+$failed_text
+
+$previous_patch_context_block$regression_witness_block$previous_smoke_errors_block$current_errors_block
+Generate exactly one patch that edits the accepted baseline program.
+
+Patch schema (STRICT):
+- Return one JSON object in this exact shape:
+{
+  "edits": [
+    {"op":"replace"|"add","name":"function_name","code":"def ..."}
+  ],
+  "delete_functions": ["optional_name"]
+}
+
+Rules:
+- Edit only the accepted baseline program shown above.
+- Output exactly one JSON object matching the patch schema.
+- Do not use import statements, comments, or docstrings.
+- Keep function names stable, and ensure `predict_next_state(state, action)` exists and returns a dict.
+- Avoid runtime errors using explicit type and bounds checks.
+- Do not use try/except, with, class, lambda, global, nonlocal, async/await, or yield.
+
+Patch semantics:
+- Each edit must provide one complete Python function definition in `code`, not a body fragment.
+- Multiple edits apply in order.
+- `replace`: replace one existing function in the accepted baseline program.
+  Use this for `predict_next_state` and for any function that already exists, including nested functions.
+- `add`: add one new top-level function whose name does not exist when this edit is applied.
+  Its `code` must be an unindented top-level `def ...`; never use it for existing or nested functions.
+- `delete_functions`: delete existing functions by name before applying `edits`.
+  `predict_next_state` cannot be deleted; missing names are ignored, top-level matches are deleted before nested ones, and ambiguous same-level matches are rejected.

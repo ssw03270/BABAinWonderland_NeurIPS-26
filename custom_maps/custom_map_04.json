@@ -1,0 +1,31 @@
+{
+  "scenario_name": "custom_map_04",
+  "display_name": "Out Of Reach",
+  "difficulty": "original",
+  "width": 24,
+  "height": 18,
+  "layout": [
+    "########################",
+    "#BWw.............g.....#",
+    "#IIw.g..wwwwwwww.g.....#",
+    "#YSw....wnnnnnnw.......#",
+    "#www..g.wnbnnrnw.......#",
+    "#......~wnnnnnnw.......#",
+    "#...gg.Iwnnnnrnw.......#",
+    "#......[wnnnnnnw.......#",
+    "#g...wwwwuuuwwwwwww.g..#",
+    "#.g..w......w.....w....#",
+    "#....w......w.RIP.w..g.#",
+    "#....w......w.....w....#",
+    "#....wuuu.w.......w....#",
+    "#.gg.wuuu...w.ZIN.wg...#",
+    "#.gg.wfuu...w.....w..gg#",
+    "#....wwwwwwwwwwwwww..g.#",
+    "#......................#",
+    "########################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

@@ -1,0 +1,29 @@
+{
+  "scenario_name": "custom_map_33",
+  "display_name": "Tiny Pond",
+  "difficulty": "original",
+  "width": 26,
+  "height": 16,
+  "layout": [
+    "##########################",
+    "#gggggg...........gg.gggg#",
+    "#gggg.........z........gg#",
+    "#g......................g#",
+    "#g.......nn.b..n........g#",
+    "#........Bn..nnnn........#",
+    "#........Iuuuuunn......z.#",
+    "#..z.....Yuunnun.........#",
+    "#.z......+unNnu.........g#",
+    "#.......n!u.uuu.........g#",
+    "#..Z.K...nn............gg#",
+    "#..f.k...n.......z....ggg#",
+    "#...............z.....ggg#",
+    "#..........z.......uuuuuu#",
+    "#..................u~IS+?#",
+    "##########################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

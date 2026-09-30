@@ -1,0 +1,5 @@
+agent:
+  name: "bfs"
+  params:
+    max_step_depth_per_world: 300
+    collect_workers: 16

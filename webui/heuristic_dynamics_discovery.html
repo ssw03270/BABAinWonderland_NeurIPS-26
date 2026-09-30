@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BABA Dynamics Discovery Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="hud-shell">
+      <header class="hud-header">
+        <div>
+          <p class="hud-kicker">HEURISTIC DYNAMICS VIEWER</p>
+          <h1 class="hud-title">Discovered Dynamics Class Browser</h1>
+        </div>
+        <div class="status-pill" id="viewer-status">loading</div>
+      </header>
+
+      <main class="hud-grid viewer-main-layout">
+        <aside class="hud-panel viewer-sidebar-panel">
+          <div class="hud-panel-head">
+            <h2>Class List</h2>
+            <div class="status-pill" id="viewer-class-count">0</div>
+          </div>
+          <div class="meta-block hud-meta" id="viewer-root-info">
+            Loading classes...
+          </div>
+          <div class="viewer-class-list" id="viewer-class-list"></div>
+        </aside>
+
+        <section class="hud-panel viewer-panel">
+          <div class="hud-panel-head">
+            <h2 id="viewer-class-title">Class Transition</h2>
+            <span class="status-pill" id="viewer-transition-position">-</span>
+          </div>
+          <div class="button-row viewer-transition-controls">
+            <button id="viewer-prev-transition" class="button">Previous Transition</button>
+            <button id="viewer-next-transition" class="button">Next Transition</button>
+          </div>
+
+          <div class="viewer-transition-grid">
+            <section class="viewer-board-column">
+              <h3 class="viewer-board-caption">Previous State</h3>
+              <div class="transition-image-frame viewer-image-host" id="viewer-prev-state"></div>
+            </section>
+            <section class="viewer-board-column">
+              <h3 class="viewer-board-caption">Next State</h3>
+              <div class="transition-image-frame viewer-image-host" id="viewer-next-state"></div>
+            </section>
+          </div>
+
+          <div class="viewer-transition-metadata meta-block hud-meta" id="viewer-transition-metadata"></div>
+          <pre class="viewer-class-state-diff meta-block hud-meta" id="viewer-class-state-diff"></pre>
+          <pre class="meta-block hud-meta" id="viewer-transition-raw"></pre>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/static/heuristic_dynamics_discovery.js"></script>
+  </body>
+</html>

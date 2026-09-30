@@ -1,0 +1,33 @@
+{
+  "scenario_name": "custom_map_35",
+  "display_name": "Research Facility",
+  "difficulty": "original",
+  "width": 26,
+  "height": 20,
+  "layout": [
+    "##########################",
+    "#...i..................i.#",
+    "#iiii.....z............ii#",
+    "#.i....z.................#",
+    "#ii.........wwwwwwwwww...#",
+    "#........QIXw........w.z.#",
+    "#..wwwwwwwwww........w...#",
+    "#..w.F.s....e........w...#",
+    "#wwBwIwwwwwww...%IP..w%..#",
+    "#..I.T.s....X....M...wI..#",
+    "#wwYwwswwwwww........wE..#",
+    "#....wnw....w........w...#",
+    "#..z.wnw.WISw...b.,..w...#",
+    "#ii..wnw..wwww.......w...#",
+    "#.i..wnwwwwnNnnw.....w...#",
+    "#.i..wnnnnnnwnnwwwwwww.ii#",
+    "#iii.wwwwwwwwwww.......i.#",
+    "#..i.............z..iiiii#",
+    "#..i................i....#",
+    "##########################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

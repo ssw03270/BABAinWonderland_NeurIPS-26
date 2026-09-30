@@ -1,0 +1,33 @@
+{
+  "scenario_name": "custom_map_31",
+  "display_name": "Assembly Team",
+  "difficulty": "original",
+  "width": 26,
+  "height": 20,
+  "layout": [
+    "##########################",
+    "#.ggggg....i...i...gggggg#",
+    "#..ggg.....i.iii......ggg#",
+    "#ii.....&IYiii..........g#",
+    "#iiiiii.&IS..i..ZIN......#",
+    "#.i..iiiiiiiiiiiiiiii..ii#",
+    "#ii..i....u...i.....i..i.#",
+    "#iiiii.;..u...i..f..iiii.#",
+    "#..i.i....u...i.....i.i..#",
+    "#.giii..B.u...i.....i.i..#",
+    "#ggg.i....u.I.i.....i...g#",
+    "#.g..i....u.Y.i.....i...g#",
+    "#g...i.;..u...i..b..iii..#",
+    "#g.iii....u...i.....i...g#",
+    "#ggi.iiiiiiiiiiiiiiii....#",
+    "#g.i.....~I[....i........#",
+    "#g.i...../IS....ii....i..#",
+    "#..i.gg.........iii..iiig#",
+    "#iiigggg..........i....gg#",
+    "##########################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

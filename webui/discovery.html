@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BABA Discovery Web Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="hud-shell">
+      <header class="hud-header">
+        <div>
+          <h1
+            class="hud-title discovery-page-title"
+            id="discovery-page-title"
+            aria-live="polite"
+            role="button"
+            tabindex="0"
+            title="Click to change immediately"
+          >
+            <span class="discovery-page-title-layer is-active">Discovery</span>
+            <span class="discovery-page-title-layer" aria-hidden="true"></span>
+          </h1>
+        </div>
+        <div class="hud-header-controls">
+          <div class="discovery-poll-controls">
+            <label class="discovery-poll-control" for="discovery-poll-live">
+              <span>Live</span>
+              <input
+                id="discovery-poll-live"
+                type="number"
+                min="100"
+                max="10000"
+                step="100"
+                inputmode="numeric"
+              />
+              <span class="discovery-poll-unit">ms</span>
+            </label>
+          </div>
+          <button type="button" class="button" id="discovery-shutdown-server" title="Shut down the detached dashboard server">
+            Shutdown Server
+          </button>
+          <button type="button" class="button" id="discovery-view-mode">Pause View</button>
+          <button
+            type="button"
+            class="button"
+            id="discovery-projection-mode"
+            title="Pause live T-SNE updates while keeping the rest of the dashboard live"
+          >
+            Pause T-SNE
+          </button>
+          <div class="status-pill" id="discovery-status">idle</div>
+        </div>
+      </header>
+
+      <div class="run-tabs" id="discovery-run-tabs"></div>
+      <section class="hud-panel discovery-run-info-panel">
+        <div class="meta-block hud-meta discovery-run-info" id="discovery-meta"></div>
+        <div class="discovery-config-snapshots" id="discovery-config-snapshots"></div>
+      </section>
+
+      <main class="discovery-main-layout">
+        <section class="hud-panel discovery-live-panel">
+          <div class="hud-panel-head">
+            <h2>World Viewer</h2>
+          </div>
+          <div class="discovery-live-stage">
+            <aside class="discovery-version-rail">
+              <div class="discovery-version-rail-head">
+                <h3 class="discovery-section-title">Version Navigator</h3>
+                <div class="discovery-version-rail-meta" id="discovery-version-summary"></div>
+              </div>
+              <div class="discovery-version-list" id="discovery-version-list"></div>
+            </aside>
+            <div class="discovery-live-board-wrap" id="discovery-live-board-wrap">
+              <div class="board-host hud-board-host discovery-live-board" id="discovery-board"></div>
+              <section class="discovery-transition-stage" id="discovery-transition-stage" hidden>
+                <div class="discovery-transition-toolbar" id="discovery-transition-toolbar"></div>
+                <div class="discovery-transition-grid">
+                  <section class="transition-stage-panel" id="discovery-transition-previous-panel">
+                    <div class="transition-stage-head">
+                      <span class="transition-stage-label">Previous State</span>
+                      <div class="transition-stage-meta" id="discovery-transition-previous-meta"></div>
+                    </div>
+                    <div class="transition-image-frame" id="discovery-transition-previous"></div>
+                  </section>
+                  <section class="transition-stage-panel" id="discovery-transition-next-panel">
+                    <div class="transition-stage-head">
+                      <span class="transition-stage-label" id="discovery-transition-next-label">Expected Next State</span>
+                      <div class="transition-stage-meta" id="discovery-transition-next-meta"></div>
+                    </div>
+                    <div class="transition-image-frame" id="discovery-transition-next"></div>
+                  </section>
+                </div>
+                <section class="transition-witness-strip" id="discovery-transition-witness-strip" hidden></section>
+              </section>
+            </div>
+          </div>
+          <section class="discovery-program-panel" id="discovery-program-panel" hidden>
+            <div class="discovery-program-head">
+              <div class="discovery-program-heading">
+                <h3 class="discovery-section-title" id="discovery-program-title">Inspector</h3>
+                <div class="discovery-program-meta" id="discovery-program-meta"></div>
+              </div>
+              <div class="discovery-program-actions">
+                <button
+                  type="button"
+                  class="button discovery-program-action discovery-program-copy"
+                  id="discovery-program-copy"
+                  aria-label="Copy source"
+                  title="Copy source"
+                  disabled
+                >
+                  <span class="discovery-program-action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" focusable="false">
+                      <rect x="5.25" y="3.25" width="7.5" height="9.5" rx="1.5"></rect>
+                      <path d="M10.75 3V2.5c0-.69-.56-1.25-1.25-1.25h-6C2.81 1.25 2.25 1.81 2.25 2.5v8c0 .69.56 1.25 1.25 1.25h.75"></path>
+                    </svg>
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  class="button discovery-program-action discovery-program-close"
+                  id="discovery-program-close"
+                  aria-label="Close inspector"
+                  title="Close inspector"
+                >
+                  <span class="discovery-program-action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 16 16" focusable="false">
+                      <path d="M4 4l8 8"></path>
+                      <path d="M12 4l-8 8"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="discovery-program-tabs" id="discovery-program-tabs" hidden></div>
+            <div class="discovery-program-code-wrap">
+              <div class="discovery-program-code" id="discovery-program-code"></div>
+            </div>
+          </section>
+          <div class="discovery-live-footer">
+            <div class="discovery-live-column" id="discovery-hud-column">
+              <h3 class="discovery-section-title" id="discovery-hud-title">HUD Metrics</h3>
+              <div class="hud-chip-sections" id="discovery-hud"></div>
+            </div>
+            <div class="discovery-live-column" id="discovery-class-rows-column">
+              <h3 class="discovery-section-title" id="discovery-class-rows-title">Dynamics Class Table</h3>
+              <div class="class-row-host discovery-live-classes" id="discovery-class-rows"></div>
+            </div>
+          </div>
+          <section class="discovery-target-worlds" id="discovery-target-worlds" hidden>
+            <div
+              class="discovery-target-worlds-head"
+              id="discovery-target-worlds-head"
+              role="button"
+              tabindex="0"
+              aria-expanded="false"
+              aria-controls="discovery-target-worlds-body"
+            >
+              <h3 class="discovery-section-title discovery-target-worlds-title" id="discovery-target-worlds-title">
+                Target Maps
+              </h3>
+            </div>
+            <div class="discovery-target-worlds-body" id="discovery-target-worlds-body" hidden>
+              <div class="discovery-target-worlds-list" id="discovery-target-worlds-list"></div>
+              <div class="discovery-target-worlds-preview">
+                <div class="board-host hud-board-host discovery-target-world-board" id="discovery-target-world-board"></div>
+                <div class="meta-block discovery-target-world-meta" id="discovery-target-world-meta"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section class="hud-panel discovery-dashboard-panel">
+          <div class="hud-panel-head">
+            <h2>Dashboard</h2>
+          </div>
+          <div class="dashboard-composite">
+            <div class="dashboard-left-stack">
+              <section class="dashboard-slot">
+                <h3 class="discovery-section-title" id="discovery-top-left-title">Top Left</h3>
+                <div class="chart-host" id="discovery-top-left-chart"></div>
+              </section>
+              <section class="dashboard-slot">
+                <h3 class="discovery-section-title" id="discovery-middle-left-title">Middle Left</h3>
+                <div class="chart-host" id="discovery-middle-left-chart"></div>
+              </section>
+              <section class="dashboard-slot">
+                <h3 class="discovery-section-title" id="discovery-bottom-left-title">Bottom Left</h3>
+                <div class="chart-host" id="discovery-bottom-left-chart"></div>
+              </section>
+            </div>
+            <div class="dashboard-right-stack">
+              <section class="dashboard-projection-slot">
+                <div class="dashboard-projection-head">
+                  <h3 class="discovery-section-title" id="discovery-projection-title">Projection</h3>
+                  <label
+                    class="projection-sparse-filter-toggle"
+                    title="Exclude sample classes below the contrastive training minimum before running T-SNE"
+                  >
+                    <input id="discovery-projection-sparse-filter" type="checkbox" />
+                    <span class="projection-sparse-filter-switch" aria-hidden="true"></span>
+                    <span class="projection-sparse-filter-label">Filter &lt; min</span>
+                  </label>
+                </div>
+                <div class="dashboard-slot-meta" id="discovery-projection-summary"></div>
+                <div class="prototype-legend" id="discovery-prototype-legend"></div>
+                <div class="projection-host" id="discovery-projection"></div>
+                <div class="projection-target-worlds" id="discovery-projection-target-worlds" hidden>
+                  <div
+                    class="projection-target-worlds-head"
+                    id="discovery-projection-target-worlds-head"
+                    role="button"
+                    tabindex="0"
+                    aria-expanded="false"
+                    aria-controls="discovery-projection-target-worlds-body"
+                  >
+                    <div
+                      class="projection-target-worlds-label"
+                      id="discovery-projection-target-worlds-title"
+                    >
+                      Target Worlds
+                    </div>
+                  </div>
+                  <div class="projection-target-worlds-body" id="discovery-projection-target-worlds-body" hidden>
+                    <div class="projection-target-worlds-list" id="discovery-projection-target-worlds-list"></div>
+                  </div>
+                </div>
+              </section>
+              <section class="dashboard-probability-slot">
+                <h3 class="discovery-section-title" id="discovery-class-probabilities-title">Class Probabilities</h3>
+                <div class="dashboard-slot-meta" id="discovery-class-probabilities-summary"></div>
+                <div class="probability-host" id="discovery-class-probabilities"></div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="hud-panel discovery-log-panel">
+          <div class="hud-panel-head">
+            <h2>CLI Log</h2>
+          </div>
+          <div class="meta-block discovery-log" id="discovery-log"></div>
+        </section>
+      </main>
+
+      <div class="discovery-eval-modal-backdrop" id="discovery-eval-modal" hidden>
+        <div
+          class="discovery-eval-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="discovery-eval-modal-title"
+        >
+          <div class="discovery-eval-modal-head">
+            <div>
+              <h2 class="discovery-section-title discovery-eval-modal-title" id="discovery-eval-modal-title">
+                Offline Heuristic Eval
+              </h2>
+              <div class="discovery-eval-modal-subtitle" id="discovery-eval-modal-subtitle"></div>
+            </div>
+            <button
+              type="button"
+              class="button discovery-eval-modal-close"
+              id="discovery-eval-modal-close"
+              aria-label="Close offline eval modal"
+            >
+              Close
+            </button>
+          </div>
+          <div class="meta-block discovery-eval-modal-source" id="discovery-eval-modal-source"></div>
+          <div class="discovery-eval-modal-form">
+            <label class="field field-wide" for="discovery-eval-dataset-root">
+              <span>Dataset Root</span>
+              <select id="discovery-eval-dataset-root"></select>
+            </label>
+            <label class="field field-wide" for="discovery-eval-discovery-json">
+              <span>Discovery JSON</span>
+              <select id="discovery-eval-discovery-json"></select>
+            </label>
+            <label class="field" for="discovery-eval-scenario-split">
+              <span>Map Split</span>
+              <select id="discovery-eval-scenario-split"></select>
+            </label>
+            <label class="field" for="discovery-eval-sample-seed">
+              <span>Sample Seed</span>
+              <input id="discovery-eval-sample-seed" type="number" step="1" value="42" />
+            </label>
+            <label class="field" for="discovery-eval-workers">
+              <span>Workers</span>
+              <input id="discovery-eval-workers" type="number" min="1" step="1" value="16" />
+            </label>
+          </div>
+          <div class="meta-block discovery-eval-modal-status" id="discovery-eval-modal-status"></div>
+          <div class="button-row">
+            <button type="button" class="button button-primary" id="discovery-eval-start-button">Run Eval</button>
+            <button type="button" class="button" id="discovery-compare-start-button">Open Compare</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="discovery-eval-modal-backdrop" id="discovery-run-delete-modal" hidden>
+        <div
+          class="discovery-eval-modal-card discovery-run-delete-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="discovery-run-delete-title"
+        >
+          <div class="discovery-eval-modal-head">
+            <div>
+              <h2 class="discovery-section-title discovery-eval-modal-title" id="discovery-run-delete-title">
+                Delete Discovery Run
+              </h2>
+              <div class="discovery-eval-modal-subtitle" id="discovery-run-delete-subtitle"></div>
+            </div>
+            <button
+              type="button"
+              class="button discovery-eval-modal-close"
+              id="discovery-run-delete-close"
+              aria-label="Close run delete modal"
+            >
+              Close
+            </button>
+          </div>
+          <div class="meta-block discovery-run-delete-warning">
+            Type the text below exactly to delete this run.
+          </div>
+          <div class="meta-block discovery-run-delete-phrase" id="discovery-run-delete-phrase"></div>
+          <label class="field field-wide discovery-run-delete-field" for="discovery-run-delete-input">
+            <span>Confirmation Text</span>
+            <input
+              id="discovery-run-delete-input"
+              type="text"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </label>
+          <div class="meta-block discovery-eval-modal-status" id="discovery-run-delete-status"></div>
+          <div class="button-row">
+            <button type="button" class="button" id="discovery-run-delete-cancel">Cancel</button>
+            <button type="button" class="button button-primary button-danger" id="discovery-run-delete-confirm">
+              Delete Run
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="discovery-eval-drawer" id="discovery-eval-drawer" hidden>
+        <div class="discovery-eval-drawer-head">
+          <div class="discovery-eval-drawer-heading">
+            <h2 class="discovery-section-title discovery-eval-drawer-title">Offline Eval</h2>
+            <div class="discovery-eval-drawer-subtitle" id="discovery-eval-drawer-subtitle"></div>
+          </div>
+          <div class="discovery-eval-drawer-actions">
+            <button type="button" class="button" id="discovery-eval-rerun-button">Run Again</button>
+            <button type="button" class="button" id="discovery-eval-save-all">Export Images</button>
+            <button type="button" class="button" id="discovery-eval-close-drawer">Close</button>
+          </div>
+        </div>
+        <div class="meta-block discovery-eval-summary" id="discovery-eval-summary"></div>
+        <div class="discovery-eval-body">
+          <section class="discovery-eval-class-panel">
+            <div class="discovery-eval-class-panel-head">
+              <h3 class="discovery-eval-class-panel-title">Class Results</h3>
+              <label class="discovery-eval-class-filter" for="discovery-eval-status-filter">
+                <span>Status</span>
+                <select id="discovery-eval-status-filter">
+                  <option value="all">All</option>
+                  <option value="failed" selected>Failed</option>
+                  <option value="pass">Pass</option>
+                </select>
+              </label>
+            </div>
+            <div class="discovery-eval-class-list" id="discovery-eval-class-list"></div>
+            <button
+              type="button"
+              class="button discovery-eval-class-load-more"
+              id="discovery-eval-class-load-more"
+              hidden
+            >
+              Load More
+            </button>
+          </section>
+          <section class="discovery-eval-detail-panel">
+            <div class="meta-block discovery-eval-detail-meta" id="discovery-eval-detail-meta"></div>
+            <div class="discovery-eval-image-grid" id="discovery-eval-image-grid">
+              <figure
+                class="discovery-eval-image-card"
+                data-kind="previous"
+                data-discovery-action="select-offline-eval-image"
+                tabindex="0"
+                role="button"
+              >
+                <figcaption class="discovery-eval-image-card-head">
+                  <div class="discovery-eval-image-card-chip-strip">
+                    <div class="discovery-eval-image-card-chip-main">
+                      <span class="hud-inline-chip discovery-eval-image-card-title-chip">
+                        <span class="hud-inline-chip-value">Prev State</span>
+                      </span>
+                      <div class="discovery-eval-image-card-head-meta" hidden></div>
+                    </div>
+                    <span class="discovery-eval-image-card-state">Select</span>
+                  </div>
+                  <div class="discovery-eval-image-card-meta" id="discovery-eval-image-meta-previous"></div>
+                </figcaption>
+                <a class="transition-image-link discovery-eval-image-link" target="_blank" rel="noreferrer">
+                  <img id="discovery-eval-image-previous" alt="Previous state" />
+                </a>
+              </figure>
+              <figure
+                class="discovery-eval-image-card"
+                data-kind="expected"
+                data-discovery-action="select-offline-eval-image"
+                tabindex="0"
+                role="button"
+              >
+                <figcaption class="discovery-eval-image-card-head">
+                  <div class="discovery-eval-image-card-chip-strip">
+                    <div class="discovery-eval-image-card-chip-main">
+                      <span class="hud-inline-chip discovery-eval-image-card-title-chip">
+                        <span class="hud-inline-chip-value">Exp State</span>
+                      </span>
+                      <div class="discovery-eval-image-card-head-meta" hidden></div>
+                    </div>
+                    <span class="discovery-eval-image-card-state">Select</span>
+                  </div>
+                  <div class="discovery-eval-image-card-meta" id="discovery-eval-image-meta-expected"></div>
+                </figcaption>
+                <a class="transition-image-link discovery-eval-image-link" target="_blank" rel="noreferrer">
+                  <img id="discovery-eval-image-expected" alt="Expected next state" />
+                </a>
+              </figure>
+              <figure
+                class="discovery-eval-image-card"
+                data-kind="predicted"
+                data-discovery-action="select-offline-eval-image"
+                tabindex="0"
+                role="button"
+              >
+                <figcaption class="discovery-eval-image-card-head">
+                  <div class="discovery-eval-image-card-chip-strip">
+                    <div class="discovery-eval-image-card-chip-main">
+                      <span class="hud-inline-chip discovery-eval-image-card-title-chip">
+                        <span class="hud-inline-chip-value">Pred State</span>
+                      </span>
+                      <div class="discovery-eval-image-card-head-meta" hidden></div>
+                    </div>
+                    <span class="discovery-eval-image-card-state">Select</span>
+                  </div>
+                  <div class="discovery-eval-image-card-meta" id="discovery-eval-image-meta-predicted"></div>
+                </figcaption>
+                <a class="transition-image-link discovery-eval-image-link" target="_blank" rel="noreferrer">
+                  <img id="discovery-eval-image-predicted" alt="Predicted next state" />
+                </a>
+              </figure>
+            </div>
+            <section class="discovery-eval-comparison-block">
+              <figure
+                class="discovery-eval-image-card discovery-eval-comparison-card"
+                data-kind="comparison"
+              >
+                <figcaption class="discovery-eval-image-card-head">
+                  <div class="discovery-eval-image-card-chip-strip">
+                    <div class="discovery-eval-image-card-chip-main">
+                      <span class="hud-inline-chip discovery-eval-image-card-title-chip">
+                        <span class="hud-inline-chip-value">Comparison</span>
+                      </span>
+                      <div class="discovery-eval-image-card-head-meta" hidden></div>
+                    </div>
+                  </div>
+                  <div class="discovery-eval-image-card-meta" id="discovery-eval-image-meta-comparison"></div>
+                </figcaption>
+                <a class="transition-image-link discovery-eval-image-link" target="_blank" rel="noreferrer">
+                  <img id="discovery-eval-image-comparison" alt="Comparison image" />
+                </a>
+              </figure>
+            </section>
+          </section>
+        </div>
+      </aside>
+    </div>
+
+    <script src="/static/vendor/echarts.min.js"></script>
+    <script type="module" src="/static/discovery.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+agent:
+  name: "graph_contrastive"
+  params:
+    dynamics_encoder_embed_dim: 384
+    dynamics_encoder_num_heads: 6
+    dynamics_encoder_num_blocks: 4
+    dynamics_pool_seeds: 1
+    dynamics_encoder_dropout: 0.0
+
+    contrastive_dim: 384
+    max_prototypes_per_class: 8
+    prototype_split_base_count: 256
+    prototype_split_min_cluster_occupancy: 32
+    prototype_sample_cap: 64000
+    prototype_sample_min_per_class: 32
+
+    contrastive_lr: 0.0001
+    contrastive_batch_size: 4096
+    contrastive_train_mode: sample_batch   # sample_batch => sample one batch per update, full_sample_epoch => shuffle all labeled samples and train over every batch once
+    encode_bucket_mode: token_budget   # none => one padded batch, token_budget => entity-count buckets with bounded padding
+    learning_starts: 4096   # measured in collected transition steps; once reached, train after each verified batch
+    train_updates_per_step: 5   # number of contrastive updates to run after a verified batch when warmup has ended
+    replay_cap: 64000
+    frontier_cap: 128000
+    frontier_sampling_mode: map_balanced   # global_uniform | map_balanced
+    # contrastive_checkpoint_path: "experiments/<run_name>/contrastive_checkpoints/latest.pt"
+
+    contrastive_temperature: 0.2
+    contrastive_min_class_count: 8
+
+    max_step_depth_per_world: 300   # null => unlimited; otherwise root-relative transition depth cap per map
+    collect_workers: 16            # auto => min(active_map_count, cpu_count)
+
+    intrinsic_reward_scale: 1.0
+    prototype_entropy_scale: 0.05
+    prototype_entropy_temperature: 0.2
+    prototype_entropy_eps: 0.000001
+
+    knn_k: 32
+    knn_avg: true
+    knn_clip: 0.0005
+    knn_exclude_self: true

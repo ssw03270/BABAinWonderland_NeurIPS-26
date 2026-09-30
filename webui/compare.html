@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BABA Compare Web UI</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="hud-shell">
+      <header class="hud-header">
+        <div>
+          <p class="hud-kicker">TRANSITION COMPARE</p>
+          <h1 class="hud-title">Transition Compare</h1>
+        </div>
+        <div class="status-pill" id="compare-status">idle</div>
+      </header>
+
+      <main class="hud-grid hud-grid-player">
+        <section class="hud-panel hud-board-panel discovery-live-panel">
+          <div class="hud-panel-head">
+            <h2>Compare Board</h2>
+          </div>
+          <div class="player-board-stage">
+            <div class="player-board-topbar">
+              <div class="player-board-meta" id="compare-board-meta"></div>
+            </div>
+            <div class="compare-board-grid">
+              <div class="compare-board-column">
+                <section class="hud-panel compare-panel">
+                  <div class="hud-panel-head">
+                    <h2>Actual Next World</h2>
+                  </div>
+                  <div class="board-host hud-board-host" id="compare-gt-after"></div>
+                </section>
+                <section class="hud-panel compare-panel">
+                  <div class="hud-panel-head">
+                    <h2>Actual Previous World</h2>
+                  </div>
+                  <div class="board-host hud-board-host" id="compare-gt-before"></div>
+                </section>
+                <div class="compare-flow-overlay" aria-hidden="true">
+                  <div class="compare-flow-chip">
+                    <span class="compare-flow-label compare-flow-label-next">NEXT</span>
+                    <span class="compare-flow-arrow"></span>
+                    <span class="compare-flow-label compare-flow-label-previous">PREV</span>
+                  </div>
+                </div>
+              </div>
+              <div class="compare-board-column">
+                <section class="hud-panel compare-panel">
+                  <div class="hud-panel-head">
+                    <h2>Predicted Next World</h2>
+                  </div>
+                  <div class="board-host hud-board-host" id="compare-pred-after"></div>
+                </section>
+                <section class="hud-panel compare-panel">
+                  <div class="hud-panel-head">
+                    <h2>Predicted Previous World</h2>
+                  </div>
+                  <div class="board-host hud-board-host" id="compare-pred-before"></div>
+                </section>
+                <div class="compare-flow-overlay" aria-hidden="true">
+                  <div class="compare-flow-chip">
+                    <span class="compare-flow-label compare-flow-label-next">NEXT</span>
+                    <span class="compare-flow-arrow"></span>
+                    <span class="compare-flow-label compare-flow-label-previous">PREV</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section class="player-board-session compare-board-session">
+            <div class="hud-panel-head">
+              <h2>Session HUD</h2>
+            </div>
+            <div class="hud-chip-sections player-session-hud" id="compare-meta"></div>
+          </section>
+        </section>
+
+        <aside class="hud-sidebar-stack">
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Controls</h2>
+            </div>
+            <div class="button-row">
+              <button id="reset-compare-button" class="button">Reset (R)</button>
+              <button id="undo-compare-button" class="button">Undo (Z)</button>
+              <button id="next-map-button" class="button">Next Map (T)</button>
+              <button id="save-compare-button" class="button">Save Current Frame (S)</button>
+            </div>
+            <div class="player-control-copy" aria-label="keyboard shortcuts">
+              <span class="player-control-hint">
+                <span class="player-control-hint-label">Move</span>
+                <span class="player-control-hint-key">Arrow Keys</span>
+              </span>
+              <span class="player-control-hint">
+                <span class="player-control-hint-label">Idle</span>
+                <span class="player-control-hint-key">Space</span>
+              </span>
+            </div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Maps</h2>
+            </div>
+            <div class="player-map-list" id="compare-map-list"></div>
+          </section>
+
+          <section class="hud-panel">
+            <div class="hud-panel-head">
+              <h2>Current Map Actions</h2>
+            </div>
+            <div class="player-history-list" id="compare-action-history"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="/static/compare.js"></script>
+  </body>
+</html>

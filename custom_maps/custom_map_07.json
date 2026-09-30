@@ -1,0 +1,28 @@
+{
+  "scenario_name": "custom_map_07",
+  "display_name": "Off Limits",
+  "difficulty": "original",
+  "width": 26,
+  "height": 16,
+  "layout": [
+    "##########################",
+    "#RIS.rggggg..s........ggg#",
+    "#....r.ggm.wwswwwwwww..gg#",
+    "#FIX.r....hw.s..wnnnw...g#",
+    "#....r...hhw.s...nfnw....#",
+    "#ZIN.r.wwwww.s..wnnnw....#",
+    "#....r.wnnnw.s..wwwww..m.#",
+    "#rrrrr.wnbn..swwwhh......#",
+    "#...m..wnnnw.ssssssssssss#",
+    "#......wwwww....whh......#",
+    "#..g.......w.WISwh....m..#",
+    "#.ggg....B.w....w...m....#",
+    "#..gg....I.wwwwww........#",
+    "#........Y........m...gg.#",
+    "#...................ggggg#",
+    "##########################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}
