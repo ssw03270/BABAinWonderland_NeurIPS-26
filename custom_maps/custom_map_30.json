@@ -1,0 +1,29 @@
+{
+  "scenario_name": "custom_map_30",
+  "display_name": "Victory Spring",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#~I[...BIY...^IP#",
+    "#...............#",
+    "#...............#",
+    "#......uuu....z.#",
+    "#.@I$..uuu..b...#",
+    "#......uuu...z..#",
+    "#...............#",
+    "#...............#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {
+    "8,5": [
+      {
+        "token": "N"
+      }
+    ]
+  },
+  "inactive_rules": [],
+  "target_plan": ""
+}

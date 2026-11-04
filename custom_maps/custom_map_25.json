@@ -1,0 +1,22 @@
+{
+  "scenario_name": "custom_map_25",
+  "display_name": "Warm River",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#~IT.....u..sZIN#",
+    "#........u..s.f.#",
+    "#....B...u..s...#",
+    "#....I...u...sss#",
+    "#....Y.b.u......#",
+    "#....+...u......#",
+    "#....$...u......#",
+    "#BIE.....u.FIX+$#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

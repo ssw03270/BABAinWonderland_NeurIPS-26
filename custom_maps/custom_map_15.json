@@ -1,0 +1,30 @@
+{
+  "scenario_name": "custom_map_15",
+  "display_name": "Novice Locksmith",
+  "difficulty": "original",
+  "width": 30,
+  "height": 18,
+  "layout": [
+    "##############################",
+    "#......wnBIYnw............y..#",
+    "#....a.wnDISnw...y..a........#",
+    "#......wnWISnw...............#",
+    "#......wwwwwwwwwwwwwwww......#",
+    "#.a....wnnnnnwnnnnnnnnw...a..#",
+    "#......wnnnnnwnnnnnnnnw......#",
+    "#...y..wnKn!nwnnnnnnnnw......#",
+    "#......wnnnnnwnnnDI?nnw......#",
+    "#......wnKnPnwnnnnnnnnw......#",
+    "#...a..wnnnnndnnnnnnnnw...a..#",
+    "#..a...wnknInwnnnnnnnnw......#",
+    "#......wnnnnnwwwwwdwwww......#",
+    "#......wnnbnnw...............#",
+    "#.y....wwwwwww....f......a.y.#",
+    "#............................#",
+    "#.....a..........ZIN.........#",
+    "##############################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

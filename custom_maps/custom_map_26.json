@@ -1,0 +1,22 @@
+{
+  "scenario_name": "custom_map_26",
+  "display_name": "Boiling River",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#........u..sZIN#",
+    "#....B...u..s.f.#",
+    "#~...I...u..s...#",
+    "#I...Y.b.u...sss#",
+    "#~...+...u......#",
+    "#+...$...u......#",
+    "#T.......u......#",
+    "#BIE.....u.FIX+$#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

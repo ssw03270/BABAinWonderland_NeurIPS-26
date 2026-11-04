@@ -1,0 +1,30 @@
+{
+  "scenario_name": "custom_map_21",
+  "display_name": "Burglary",
+  "difficulty": "original",
+  "width": 30,
+  "height": 18,
+  "layout": [
+    "##############################",
+    "#BIYwwwwa...........aa.www.aa#",
+    "#wwwww................KIXwwww#",
+    "#DISw.........I.N......www.aa#",
+    "#wwww.................ww.wwww#",
+    "#ww.......................ww.#",
+    "#w.......wwwwwwdwwwww......w.#",
+    "#w.......w*IP....WISw......w.#",
+    "#........w........w.w......ww#",
+    "#........w..........w.......w#",
+    "#...y....w..k....t..w.......w#",
+    "#........w..........w........#",
+    "#........w.KI!..bI?.w...y....#",
+    "#.......aw..........w........#",
+    "#..y....aw..........wa.....y.#",
+    "#a...y..awwwwwwwwwwwwa......a#",
+    "#aa....aaaa......aaaa.a...aaa#",
+    "##############################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

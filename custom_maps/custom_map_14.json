@@ -1,0 +1,30 @@
+{
+  "scenario_name": "custom_map_14",
+  "display_name": "Lock",
+  "difficulty": "original",
+  "width": 30,
+  "height": 18,
+  "layout": [
+    "##############################",
+    "#.........................a..#",
+    "#.....wwwww...y...wwwww....a.#",
+    "#.y...wBIYw.......wDISw......#",
+    "#.....wwwww.......wwwww.....a#",
+    "#.....wWISw.......wDI?w......#",
+    "#.....wwwwwww....wwwwwww.....#",
+    "#...y.wnnnnnw....w.....w.....#",
+    "#.....wnknbndhrkhd..R..w...y.#",
+    "#.....wnnnnnw..h.w.....w.....#",
+    "#.....wwwwwww..h.wwwdwww.....#",
+    "#..............h.w....w......#",
+    "#.p.......KI!..h.w..f.w......#",
+    "#hhh......I....h.ww...w......#",
+    "#hhh......P.hhhh..wZINw..y...#",
+    "#..p.a......h.....wwwww......#",
+    "#...a.......h................#",
+    "##############################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

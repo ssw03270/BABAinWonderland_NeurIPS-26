@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Local API keys
+configs/llm_credentials.yaml
+
+# Run outputs
+experiments/
+artifacts/
+manual_env_play/

@@ -1,0 +1,32 @@
+{
+  "scenario_name": "custom_map_06",
+  "display_name": "Volcano",
+  "difficulty": "original",
+  "width": 35,
+  "height": 20,
+  "layout": [
+    "###################################",
+    "#WISll.w.....w...w...lllllll......#",
+    "#llll..w.......b.w..lllllll.......#",
+    "#ll....w.....w...w..llllll........#",
+    "#l.....w.BIY.wwwww.lllllll........#",
+    "#......ww...ww.....llllll.........#",
+    "#......w.....r.....llllll.........#",
+    "#......wwwwwww....lllllll.........#",
+    "#......wRw........llllll..........#",
+    "#.......I.........llllll..........#",
+    "#.......P........lllllll..........#",
+    "#............L...llllll...........#",
+    "#...............llllll............#",
+    "#.......wBIEw...llllll.....f......#",
+    "#.......wwwww..llllll.............#",
+    "#.......wLITw..lllll......ZIN.....#",
+    "#.......wwwww.llllll.............l#",
+    "#............llllll.............ll#",
+    "#...........lllllll............lll#",
+    "###################################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

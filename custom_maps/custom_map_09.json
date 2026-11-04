@@ -1,0 +1,30 @@
+{
+  "scenario_name": "custom_map_09",
+  "display_name": "Icy Waters",
+  "difficulty": "original",
+  "width": 30,
+  "height": 18,
+  "layout": [
+    "##############################",
+    "#ZINxxx.....xxx..xx.......JI[#",
+    "#xxxx........xxxxx.x.........#",
+    "#xx...........xxxx..x...jjj..#",
+    "#x....wwwww...xxxxxxxx.jj.jj.#",
+    "#.....w...w....xxxxxxx.j.f.j.#",
+    "#.....w.b.w....xxx...xxjj.jj.#",
+    "#.....w...w....xx.....x.jjj..#",
+    "#.....ww.ww.....x..W...x.....#",
+    "#...............x.....xxx....#",
+    "#...............xx...xxxx....#",
+    "#........wwww....xxxxxxx.x...#",
+    "#.....w..BIY+[w...xxxxxx.xx..#",
+    "#.....wwwwwww......xxxxxx....#",
+    "#x..................xxxxxxx..#",
+    "#xx..................xxxxxxx.#",
+    "#xxxxx.x....x.........xxxxWIS#",
+    "##############################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

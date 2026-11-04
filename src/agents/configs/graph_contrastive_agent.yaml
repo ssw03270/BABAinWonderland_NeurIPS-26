@@ -1,0 +1,70 @@
+agent:
+  name: "graph_contrastive"
+  params:
+    dynamics_encoder_embed_dim: 384
+    dynamics_encoder_num_heads: 6
+    dynamics_encoder_num_blocks: 4
+    dynamics_pool_seeds: 1
+    dynamics_encoder_dropout: 0.0
+
+    contrastive_dim: 384
+    max_prototypes_per_class: 8
+    prototype_split_base_count: 256
+    prototype_split_min_cluster_occupancy: 32
+    prototype_sample_cap: 64000
+    prototype_sample_min_per_class: 8
+
+    contrastive_lr: 0.0001
+    contrastive_batch_size: 4096
+    contrastive_train_mode: sample_batch   # sample_batch => sample one batch per update, full_sample_epoch => shuffle all labeled samples and train over every batch once
+    encode_bucket_mode: token_budget   # none => one padded batch, token_budget => entity-count buckets with bounded padding
+    train_phase_timing: false          # true => emit a per-cycle [TRAIN PHASE] breakdown + host/CUDA memory gauges
+    train_phase_timing_cuda_sync: false  # true => torch.cuda.synchronize() at phase boundaries (exact GPU attribution, slower)
+    # Bound on the encoded per-state token cache, in entries. 0 => unbounded.
+    # These tensors are pageable (never pinned): their only consumer packs them into
+    # a freshly allocated batch buffer that is pinned separately, so pinning them
+    # would page-lock memory that no DMA ever reads.
+    # Default 0 ON PURPOSE. A miss costs a full re-encode (a pure-Python per-object
+    # loop), and the working set is large: all live frontier candidates plus
+    # replay_cap states can be touched in one cycle. Any bound below that silently
+    # converts hits into re-encodes. Set a positive value only as an RSS safety
+    # valve, and keep it well above the expected frontier plus replay working set.
+    # Eviction is random batch (10% at a time), not LRU: the training path samples
+    # uniformly within a class (all policies tie on hit rate, LRU just adds
+    # bookkeeping) and the frontier path scans a re-drawn set cyclically, where LRU
+    # evicts precisely the entries the next pass needs.
+    state_token_cache_max_entries: 0
+    # true => torch.compile the two set-transformer leaves (encode_context and the
+    # action-conditioned pool+fusion) with dynamic shapes. Both the training and the
+    # frontier-scoring paths go through them.
+    # Default false ON PURPOSE: compiled kernels re-associate bf16 reductions, so encoder
+    # outputs move slightly. The kNN neighbour order and the frontier heap's budget
+    # boundary can then flip, which makes the exploration trajectory of a compiled run
+    # differ from an eager run at the same seed. Keep one setting across an experiment
+    # group; do not average seeds across both.
+    # A machine that cannot compile (no triton, no CUDA, Windows) falls back to
+    # eager and records why in diagnostics as compile_disabled_reason.
+    compile_encoder: false
+    # Fixed representation updates per trainable verified batch. With a 4,096-transition
+    # batch this is one update per about 137 new transitions.
+    train_updates_per_step: 30
+    replay_cap: 64000
+    # full_map_uniform: sample K/map without pruning; score_topk_per_map: retain top-K/map.
+    frontier_policy: score_topk_per_map
+    frontier_capacity_per_map: 4000
+    # contrastive_checkpoint_path: "experiments/<run_name>/contrastive_checkpoints/latest.pt"
+
+    contrastive_temperature: 0.2
+    contrastive_min_class_count: 8
+
+    collect_workers: 16            # auto => min(active_map_count, cpu_count)
+
+    intrinsic_reward_scale: 1.0
+    prototype_entropy_scale: 0.35
+    prototype_entropy_temperature: 0.2
+    prototype_entropy_eps: 0.000001
+
+    knn_k: 32
+    knn_avg: true
+    knn_clip: 0.0005
+    knn_exclude_self: true

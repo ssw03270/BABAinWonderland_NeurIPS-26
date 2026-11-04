@@ -1,0 +1,22 @@
+{
+  "scenario_name": "custom_map_13",
+  "display_name": "Brick Wall",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#.a...........a.#",
+    "#a..nnnnn.......#",
+    "#...nBIYn.wwwwww#",
+    "#...nnnnn.whhhwW#",
+    "#.b.nnnnn.whfhwI#",
+    "#...nZINn.whhhwS#",
+    "#...nnnnn.wwwwww#",
+    "#..a.........a..#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

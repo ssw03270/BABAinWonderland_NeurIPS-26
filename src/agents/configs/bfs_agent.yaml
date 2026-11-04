@@ -1,0 +1,4 @@
+agent:
+  name: "bfs"
+  params:
+    collect_workers: 16

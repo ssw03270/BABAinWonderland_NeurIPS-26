@@ -1,0 +1,22 @@
+{
+  "scenario_name": "custom_map_23",
+  "display_name": "Sunken Temple",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#........wwwwwww#",
+    "#...b....rj.CZ.J#",
+    "#..BIY...w..wIII#",
+    "#........w..wXNP#",
+    "#....wwwww..wwww#",
+    "#....w...w.....w#",
+    "#....c.f.w.RIP.w#",
+    "#WISww...w.....w#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

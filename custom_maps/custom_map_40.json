@@ -1,0 +1,23 @@
+{
+  "scenario_name": "custom_map_40",
+  "display_name": "Evaporating River",
+  "difficulty": "original",
+  "width": 17,
+  "height": 10,
+  "layout": [
+    "#################",
+    "#BIY....u.w^IP+E#",
+    "#.Zsss..u......F#",
+    "#I......u..z...I#",
+    "#N..~...u......X#",
+    "#w..I.b.u.......#",
+    "#...[...u..f....#",
+    "#.......u.......#",
+    "#WIS....u....~IT#",
+    "#################"
+  ],
+  "dynamic_directions": {},
+  "cell_stacks": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

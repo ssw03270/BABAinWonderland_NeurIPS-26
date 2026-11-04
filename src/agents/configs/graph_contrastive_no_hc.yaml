@@ -1,0 +1,5 @@
+base_config: "graph_contrastive_agent.yaml"
+
+agent:
+  params:
+    prototype_entropy_scale: 0.0

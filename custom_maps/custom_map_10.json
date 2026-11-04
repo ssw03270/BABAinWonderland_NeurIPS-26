@@ -1,0 +1,30 @@
+{
+  "scenario_name": "custom_map_10",
+  "display_name": "Turns",
+  "difficulty": "original",
+  "width": 30,
+  "height": 18,
+  "layout": [
+    "##############################",
+    "#.a...................aa.....#",
+    "#a........................a..#",
+    "#.....FIXwwwwwwwwwwwww.....a.#",
+    "#....wwwww...........w...j...#",
+    "#....wnnnw...........w.......#",
+    "#....wn.nwww..*I[....wWIS....#",
+    "#..c.w.C.s.t.........wwwwww..#",
+    "#....wn.nwww..RIP.....rnwnw..#",
+    "#....wnnnw...........wwnbnw..#",
+    "#....wwBww....r.+....wwnwnw..#",
+    "#.....wIww...........wwwwww..#",
+    "#...f.wYww...........w.......#",
+    "#a....wwwwwwwwwwwwwwww..j....#",
+    "#..ZIN....................a..#",
+    "#a..................j..aaa...#",
+    "#aa.....a.................a..#",
+    "##############################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

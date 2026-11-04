@@ -1,0 +1,30 @@
+{
+  "scenario_name": "custom_map_03",
+  "display_name": "Now What Is This?",
+  "difficulty": "original",
+  "width": 24,
+  "height": 18,
+  "layout": [
+    "########################",
+    "#.....n................#",
+    "#.n.....ffffffff.....n.#",
+    "#..n....f......f.n.....#",
+    "#..n....f.I....f..n....#",
+    "#.......f......f.......#",
+    "#..ffffff....N.f.......#",
+    "#..fggggg......f.......#",
+    "#.nfgBggg......f.......#",
+    "#n.fggggg......f....n..#",
+    "#..fffffffffffff.......#",
+    "#.......f......f.......#",
+    "#...W...f.Z....f.......#",
+    "#...I...f.I..w.f.......#",
+    "#.n.Y...f.S....f..n....#",
+    "#.......f...ffff.n.....#",
+    "#...n...fffff....n.....#",
+    "########################"
+  ],
+  "dynamic_directions": {},
+  "inactive_rules": [],
+  "target_plan": ""
+}

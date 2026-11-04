@@ -1,0 +1,45 @@
+You are preparing a new line-based apply_patch patch for a Python world model program.
+
+Your task:
+- Base your reasoning on the structured state representation and the observed transition differences.
+- Use the target failures as the primary objective.
+- Edit only the accepted baseline program shown below.
+- Prefer repairs that improve structural simplicity by reusing existing logic and minimizing special-case conditions.
+
+$additional_instructions_block
+$sandbox_runtime_block
+Accepted baseline program to patch now:
+- This is the only program you may edit.
+- Treat it as the contents of `accepted_baseline_program.py`.
+```python
+$current_source
+```
+
+Accepted baseline target failures to solve with the next patch:
+- These are the direct failures the next patch must fix.
+- Any field named accepted_baseline_predicted_next_state is the accepted baseline output.
+$failed_text
+
+$previous_patch_context_block$regression_witness_block$previous_smoke_errors_block$current_errors_block
+Generate exactly one line-based patch that edits the accepted baseline program.
+
+Patch format (STRICT):
+- Return exactly one apply_patch block in this style:
+*** Begin Patch
+*** Update File: accepted_baseline_program.py
+@@
+-old line
++new line
+*** End Patch
+
+Rules:
+- Edit only the accepted baseline program shown above.
+- Output only the patch block. Do not wrap it in markdown fences.
+- Use exactly one `*** Update File:` section for `accepted_baseline_program.py`.
+- Include enough unchanged context lines to disambiguate repeated text.
+- Make the smallest change that fixes the target failures while preserving protected witnesses.
+- Do not use `*** Add File:`, `*** Delete File:`, or file moves.
+- Do not use import statements, comments, or docstrings unless absolutely necessary.
+- Keep predict_next_state(state, action) defined and returning a dict.
+- Avoid runtime errors using explicit type and bounds checks.
+- Do not use try/except, with, class, lambda, global, nonlocal, async/await, or yield.
